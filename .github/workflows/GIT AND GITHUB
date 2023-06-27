@@ -1,0 +1,158 @@
+To maintain any code base or files user require one structured way to store that and everyone can access that code
+Intially developer write the code  and save into there local machine and whenever done the update that also saved in local machine.
+
+To overcome that challenge user required "Version Control Tools" . There are lot of VCT now in market e.g GIT,SVN,Mercurial, etc
+
+Version control tool manage the files in a structured way either it could be on local machine or a remote server.
+Now a days for every VCT maintaining own cloud hosting server for remote access.
+
+for E.g 
+GIT =It is the Version control tool
+Github=It is the cloud hosting server which maintains the git files and distributed globally.
+SVN= it is also a VCT
+BitBucket= Same as Github
+
+>>GIT Clients
+There are so many clients for accessing GIT
+GITBash, GITCMD,GITGUI,GIT Desktop,GIT Plugin in Eclipse,SOURCETREE
+
+>Git Installtion 
+It is open source you can downaload and install in your machine
+
+>Commands 
+git
+git --version
+git --help
+Enter git and verify installtion is completed or not
+
+>Git Bash
+We will be  using GIT Bash in the complete course
+
+>To set the new user name below commands can  use in GITBash
+    1.To check the current username                            git config user.name 
+    2.Set the new user name                                    git config--global user.name "Enter the user name"
+    3.Verify once again with the above commands
+    4.View the complete list of setting in Git Config          git config--list
+    5. Set email id                                            git config--global user.email "shivang.pathak@lntinfotech.com"
+	6.View particular setting in git config                    git config--global<key>
+	
+>Common diretory commands on Git Bash
+                        
+		1. cd command is used to set the path                 cd <path of the directory    >              cd  C:\WorkSpace\\SubFolder\\Subfolder (Gitbash and cmd single will work)
+		2. ls command(View all directoreis in GitBash)        ls hit Enter                               Inside WorkSpace all folder will visible
+        3. mk stands for make and                             mkdir FolderName or mkdir "FolderName"
+        4. rm stands for remove	                              rmdir FolderName or rmdirdir "FolderName"
+        4. rm stands for remove	
+
+> git cmd
+         1. Set the repository path same a above            cd<path of the repository>   cd C:\WorkSpace
+		 2. Create new folder                               mkdir GitCmdFolder
+		 3. After creating the folder initialize the git
+
+> Initialize Git Repository for the Project
+    
+	git init  
+	
+View the content of the directory and note that a .git folder has been created therein.After Git initializing, the project is tracked by GIT.
+                     		 
+> To clone the repository, enter the command git clone https://github.com/apache/poi.git
+   Cloning a repository depends on the size of the repository. Usually, it takes a while for a big repository. You'll have to wait until all the files are checked out.
+
+git clone <enter the URL and hit enter>   
+
+>Add and Track changes to Staging
+This tutorial is all about working with a local repository 
+        
+		1.Working Directory-Local Repository, where you will be doing all the work like creating,editing,deliting and organizing project files
+		2.Staging Area-Tracked local repository where you will list changes you make to the working directory.
+		3.Repository-Remote respository where git  permanently stores the changes in different versions of the project
+		
+git status- This will show how many files are in staging area, commits , uncommits , non tracked changes
+		
+Git Add Commmand-First will add some files inside the Directory or Project Folder and add some data there e.g File1.txt(Name and Address) ,File2.txt(Name and Address)
+
+     To add single file                                                               git add FileName.txt
+     Check the status added or not                                                    git status
+     Multiple files you can add                                                       git add FileName1.txt FileName2.txt FileName3.txt
+     All available file can add at once                                               git add *	 
+
+Git Status Command-
+             Staging Area- This is the tracking area where all the repository file is going to track it could be single or multiple files small or large change anything
+			 UnTracked Changes- Files on the local repository which are not pushed to staging are known as untracked changes
+			 Tracked Changes- Files on staging are known as tracked changes.
+			 
+			 git status
+
+Git Remove Command-	The git rm command removes tracked changes from the Staging Area. 
+		
+
+	 To remove single file from staging area                                             git rm --cached FileName.txt  
+     Check the status removed or not                                                     git status
+     Multiple files you can remove                                                       git rm --cached FileName1.txt FileName2.txt FileName3.txt
+     All available file can remove at once                                               git rm --cached *	 
+
+>>How to create a file using GITBash
+                                     touch FileName                                (This command does not work in CMD)
+									 touch FileName1 FileName2 FileName3
+	Write something in Git File 
+	                        echo "Test Message" >FileName.txt                       (This command does not work in CMD)
+	          
+First Commit In Git
+            Git commit without adding file in staging area
+			                Git Commit   - Untracked file in git
+                            Git add FileName.txt
+                            Git commit  (Without message)
+                            Git commit -m "This is my first commit"       (With message)
+							
+>> Git message is very important for every commit 
+                             1. It should be short and descriptive so everyone can understand easily (Description not more than 70 character if required sometime its fine)
+							 2. Keep the Subject and Body Separeted (Should not be more than 50 character 
+							 
+							 
+>>Alter Files in Git
+
+              How to rename a file through Git              git mv <original file name> <new file name>
+              How to rename the file outside Git            mv <original file name> <new file name>
+							 
+
+>>What is git log Command
+Git log is a command used in Git to access the history of commits that the repository has gone through. 
+A simple log command is executed by typing the following command inside git:
+                              git log  
+
+ >How to view Squashed Commit History with Git Log?
+       Line option in git log is used for viewing the condensed view of the commit history that we just saw above. 
+	   To see how it looks, type the following command and press enter
+	     
+		           git log --oneline
+				   
+As you can see some of the details that were previously visible are now hidden and the view is of only one-liner. 
+This is much understandable since every commit is now shown in a single line, starts with Commit Id followed by Commit Message.
+Commit Id: Every commit has a commit id which is actually a compressed version of commit hash. Since a commit hash is not a sequential number, 
+compressing it still shows unique commits.
+Commit Message: It is clear with a message (commit message to understand what the commit was about) and short.
+
+                                   git log <FileName>
+								   
+ >How to view Commits History for a range? 
+                               git log <since commitId>..<until commitId>
+							   
+ >How to view a limited number of Git Commits History?
+                           git log -n 3 -oneline (issue last 3 git commits)
+
+>>Git Diff
+       What is Gti Diff Command ?
+	                     git diff                  (To identify the changes in files)
+						 git diff --color-words    (To see changes in one line)
+						 
+						 
+>>Git History
+				
+       	   
+
+
+
+
+
+
+
